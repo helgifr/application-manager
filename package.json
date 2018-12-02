@@ -2,6 +2,9 @@
   "name": "application-manager",
   "version": "0.1.0",
   "description": "",
+  "engines": {
+    "node": "8.9.4"
+  },
   "main": ".eslintrc.js",
   "dependencies": {
     "bcrypt": "^1.0.3",

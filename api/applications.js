@@ -40,7 +40,7 @@ async function newApplicationRoute(req, res) {
 
   const result = await saveApplication(id, application);
 
-  return res.json(result);
+  return res.status(201).json(result);
 }
 
 module.exports = {

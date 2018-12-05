@@ -90,10 +90,10 @@ async function validateApplication({
   }
 
   if (!patch || state || isEmpty(state)) {
-    if (typeof state !== 'string' || state.length === 0) {
+    if (typeof state !== 'object' || state.length === 0) {
       messages.push({
         field: 'state',
-        message: 'State is required and must not be empty',
+        message: 'Ferli is required and must not be empty',
       });
     }
   }

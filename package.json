@@ -10,11 +10,11 @@
     "bcrypt": "^1.0.3",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
-    "mongodb": "^3.1.10",
     "jsonwebtoken": "^8.1.1",
+    "mongodb": "^3.1.10",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.1",
-    "xss": "^0.3.7"
+    "xss": "^0.3.8"
   },
   "devDependencies": {
     "eslint": "^4.17.0",

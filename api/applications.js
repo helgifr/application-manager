@@ -3,12 +3,13 @@ const {
   fetchApplications,
   fetchApplication,
   conditionalUpdate,
+  deleteApplication,
 } = require('../db');
 const { validateApplication } = require('../validation');
 
 const xss = require('xss');
 
-const { leftpad } = require('../util');
+const { leftpad, compare } = require('../util');
 
 async function getApplicationsRoute(req, res) {
   const { id } = req;
@@ -95,7 +96,7 @@ async function patchApplicationRoute(req, res) {
     patchCount += 1;
     application.date = xss(date);
   }
-  if (isset(process) && process !== application.process) {
+  if (isset(process) && !compare(process, application.process)) {
     patchCount += 1;
     application.process = xss(process);
   }
@@ -110,8 +111,32 @@ async function patchApplicationRoute(req, res) {
   return res.status(201).json(result);
 }
 
+async function deleteApplicationRoute(req, res) {
+  const { id: index } = req.params;
+  const { id } = req;
+
+  if (!Number.isInteger(Number(index))) {
+    return res.status(404).json({ error: 'Application not found' });
+  }
+
+  const { application } = await fetchApplication(id, index);
+
+  if (!application) {
+    return res.status(404).json({ error: 'Application not found' });
+  }
+
+  const { result } = await deleteApplication(id, index);
+
+  if (result.ok) {
+    return res.status(204).json({});
+  }
+
+  return res.status(404).json({ error: 'Application entry not found' });
+}
+
 module.exports = {
   getApplicationsRoute,
   newApplicationRoute,
   patchApplicationRoute,
+  deleteApplicationRoute,
 };

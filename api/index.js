@@ -7,6 +7,7 @@ const {
   getApplicationsRoute,
   newApplicationRoute,
   patchApplicationRoute,
+  deleteApplicationRoute,
 } = require('./applications');
 
 function catchErrors(fn) {
@@ -16,5 +17,6 @@ function catchErrors(fn) {
 router.get('/applications/', requireAuth, catchErrors(getApplicationsRoute));
 router.post('/applications', requireAuth, catchErrors(newApplicationRoute));
 router.patch('/applications/:id', requireAuth, catchErrors(patchApplicationRoute));
+router.delete('/applications/:id', requireAuth, catchErrors(deleteApplicationRoute));
 
 module.exports = router;

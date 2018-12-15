@@ -60,8 +60,10 @@ function validateProcess(process) {
   const possibleProcesses = [
     ['Bið athugun'],
     ['Neitun'],
+    ['Viðtal'],
     ['Viðtal', 'Neitun'],
     ['Viðtal', 'Boð í starf'],
+    ['Viðtal', 'Annað viðtal'],
     ['Viðtal', 'Annað viðtal', 'Neitun'],
     ['Viðtal', 'Annað viðtal', 'Boð í starf'],
   ];

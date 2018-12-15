@@ -71,7 +71,7 @@ async function patchApplicationRoute(req, res) {
   const validationMessage = await validateApplication(req.body, true);
 
   if (validationMessage.length > 0) {
-    return res.status(404).json({ errors: validationMessage });
+    return res.status(400).json({ errors: validationMessage });
   }
 
   const isset = f => typeof f === 'string' || typeof f === 'number' || typeof f === 'object';

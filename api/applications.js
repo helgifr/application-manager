@@ -37,10 +37,10 @@ async function newApplicationRoute(req, res) {
   }
 
   const application = {
-    company,
-    posName,
-    date: fixedDate,
-    process,
+    company: xss(company),
+    posName: xss(posName),
+    date: xss(fixedDate),
+    process: xss(process),
   };
 
   const validationMessage = await validateApplication(application);

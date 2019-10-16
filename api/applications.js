@@ -43,6 +43,11 @@ async function newApplicationRoute(req, res) {
     process: xss(process),
   };
 
+  if (typeof application.process === 'string') {
+    const { process } = application;
+    application.process = process.split(',');
+  }
+
   const validationMessage = await validateApplication(application);
 
   if (validationMessage.length > 0) {

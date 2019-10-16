@@ -42,6 +42,8 @@ async function newApplicationRoute(req, res) {
     date: xss(fixedDate),
     process: xss(process),
   };
+  
+  console.log(application);
 
   const validationMessage = await validateApplication(application);
 

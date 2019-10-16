@@ -9,10 +9,6 @@ let result;
 let oID;
 
 async function saveApplication(id, application) {
-  if (typeof application.process === 'string') {
-    const { process } = application;
-    newApplication.process = process.split(',');
-  }
   try {
     oID = new mongo.ObjectID(id);
   } catch (err) {

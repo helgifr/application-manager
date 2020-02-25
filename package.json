@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "engines": {
-    "node": "8.9.4"
+    "node": "12.16.1"
   },
   "main": ".eslintrc.js",
   "dependencies": {

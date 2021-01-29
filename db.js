@@ -136,11 +136,13 @@ async function addUser(user) {
 
 async function findUserByUsername(name) {
   try {
+    console.log(dbUrl);
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
     db = client.db('Applications');
     result = await db.collection('users')
       .findOne({ username: name }, { projection: { applications: 0 } });
   } catch (err) {
+    console.error(err);
     throw err;
   } finally {
     await client.close();

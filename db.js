@@ -16,7 +16,7 @@ async function saveApplication(id, application) {
   }
   try {
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
-    db = client.db('applications-db');
+    db = client.db('Applications');
     result = await db.collection('users')
       .findOneAndUpdate({ _id: oID }, { $push: { applications: application } });
   } catch (err) {
@@ -35,7 +35,7 @@ async function fetchApplications(id) {
   }
   try {
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
-    db = client.db('applications-db');
+    db = client.db('Applications');
     result = await db.collection('users')
       .findOne({ _id: oID }, { projection: { _id: 0, applications: 1 } });
   } catch (err) {
@@ -54,7 +54,7 @@ async function fetchApplication(id, index) {
   }
   try {
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
-    db = client.db('applications-db');
+    db = client.db('Applications');
     result = await db.collection('users')
       .aggregate([{ $match: { _id: oID } }, { $project: { _id: 0, application: { $arrayElemAt: ['$applications', Number(index)] } } }])
       .toArray();
@@ -83,7 +83,7 @@ async function conditionalUpdate(id, index, application) {
   }
   try {
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
-    db = client.db('applications-db');
+    db = client.db('Applications');
     result = await db.collection('users')
       .updateOne({ _id: oID }, set);
   } catch (err) {
@@ -106,7 +106,7 @@ async function deleteApplication(id, index) {
   }
   try {
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
-    db = client.db('applications-db');
+    db = client.db('Applications');
     await db.collection('users')
       .updateOne({ _id: oID }, set);
     result = await db.collection('users')
@@ -123,7 +123,7 @@ async function deleteApplication(id, index) {
 async function addUser(user) {
   try {
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
-    db = client.db('applications-db');
+    db = client.db('Applications');
     result = await db.collection('users')
       .insertOne(user);
   } catch (err) {
@@ -137,7 +137,7 @@ async function addUser(user) {
 async function findUserByUsername(name) {
   try {
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
-    db = client.db('applications-db');
+    db = client.db('Applications');
     result = await db.collection('users')
       .findOne({ username: name }, { projection: { applications: 0 } });
   } catch (err) {
@@ -157,7 +157,7 @@ async function findUserById(id) {
   }
   try {
     client = await MongoClient.connect(dbUrl, { useNewUrlParser: true });
-    db = client.db('applications-db');
+    db = client.db('Applications');
     result = await db.collection('users')
       .findOne({ _id: oID });
   } catch (err) {

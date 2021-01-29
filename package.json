@@ -7,19 +7,19 @@
   },
   "main": ".eslintrc.js",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.0",
     "dotenv": "^5.0.0",
-    "express": "^4.16.2",
-    "jsonwebtoken": "^8.1.1",
-    "mongodb": "^3.1.10",
-    "passport": "^0.4.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.3",
+    "passport": "^0.4.1",
     "passport-jwt": "^3.0.1",
     "xss": "^0.3.8"
   },
   "devDependencies": {
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0"
+    "eslint-plugin-import": "^2.22.1"
   },
   "scripts": {
     "start": "node app.js",
